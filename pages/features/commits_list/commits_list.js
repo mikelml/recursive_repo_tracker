@@ -13,7 +13,7 @@ export const getCommits = createAsyncThunk(
 export const commits_list = createSlice({
     name: 'commits_list',
     initialState: {
-        list: null,
+        list: [],
         status: null
     },
     extraReducers: {
@@ -29,5 +29,6 @@ export const commits_list = createSlice({
         })
     }
 })
+export const selected_commits_list = (state) => state.commits_list.list
 
 export default commits_list.reducer

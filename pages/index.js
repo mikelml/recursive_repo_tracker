@@ -1,23 +1,27 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from '../styles/Home.module.css'
-import { getCommits } from './features/commits_list/commits_list'
+import { getCommits, selected_commits_list } from './features/commits_list/commits_list'
 
 export default function Home() {
   const dispatch = useDispatch()
-
+  const commits_list = useSelector(selected_commits_list)
+  
   useEffect(() => {
     dispatch(getCommits())
   },[dispatch])
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1>Hello tracker</h1>
+      <h1 data-aos="fade-up">Hello tracker</h1>
+      <ul className="commits-container" data-aos="zoom-in" data-aos-delay="500" >
+        {
+          commits_list.map(item => 
+            <div className="text-center">{item.commit.message}</div>
+          )
+        }
+      </ul>
     </div>
   )
 }
