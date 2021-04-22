@@ -14,11 +14,20 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1 data-aos="fade-up">Hello tracker</h1>
+      <h1 data-aos="fade-up">Mikelml</h1>
+      <h2 data-aos="fade-up">Recents commits</h2>
+      <h3 data-aos="fade-up">of</h3>
+      <h2 data-aos="fade-up">recursive_repo_tracker</h2>
+
       <ul className="commits-container" data-aos="zoom-in" data-aos-delay="500" >
         {
-          commits_list.map(item => 
-            <div className="text-center">{item.commit.message}</div>
+          [6,7,8,9,10].map((item, i)=> 
+            <div key={i} className="text-center">commit example {item}</div>
+          )
+        }
+        {
+          commits_list.map((item, i)=> 
+            <div key={i} className="text-center">{item.commit.message}</div>
           )
         }
       </ul>

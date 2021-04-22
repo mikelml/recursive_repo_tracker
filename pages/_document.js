@@ -14,6 +14,12 @@ class MyDocument extends Document {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <body>
+          <nav class="navbar navbar-expand-lg navbar-light custom-navbar-border-bottom">
+            <div className="navbar-custom-container">
+              <a class="navbar-brand" href="/">Commits</a>
+              <a class="navbar-brand" href="/user">User</a>
+            </div>
+          </nav>
           <Main />
           <NextScript />
         </body>
