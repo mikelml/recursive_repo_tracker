@@ -2,14 +2,14 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from '../styles/Home.module.css'
-import { getInfo, selected_github_info } from './features/slices/github_info'
+import { getInfo, selected_github_info } from '../store/slices/github_info'
 
 export default function User() {
   const dispatch = useDispatch()
   const github_info = useSelector(selected_github_info)
   
   useEffect(() => {
-    dispatch(getInfo())
+    dispatch(getInfo({owner: process.env.USER}))
   },[dispatch])
 
   return (

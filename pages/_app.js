@@ -3,7 +3,7 @@ import '../styles/globals.css'
 import '../styles/main.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Provider } from 'react-redux'
-import store from './app/store'
+import store from '../store/app/store'
 
 function MyApp({ Component, pageProps }) {
   return (

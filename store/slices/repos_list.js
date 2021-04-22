@@ -4,8 +4,8 @@ const owner = process.env.USER
 
 export const getRepos = createAsyncThunk(
     'commits/getRepos',
-    async (obj, {dispatch}) => {
-        return fetch(`https://api.github.com/users/${owner}/repos`).then(res => 
+    async (param, {dispatch}) => {
+        return fetch(`https://api.github.com/users/${param.owner}/repos`).then(res => 
             res.json()
         )
     }
@@ -22,7 +22,7 @@ export const repos_list = createSlice({
             state.status = 'loading'
         }),
         [getRepos.fulfilled]: ((state, { payload }) => {
-            if(payload.lenght > 0)
+            if(payload.length > 0)
                 state.list = payload
             state.status = 'succes'
         }),

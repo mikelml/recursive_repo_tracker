@@ -1,11 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-const owner = process.env.USER, repo = process.env.REPO
-
 export const getCommits = createAsyncThunk(
     'commits/getCommits',
-    async (obj, {dispatch}) => {
-        return fetch(`https://api.github.com/repos/${owner}/${repo}/commits`).then(res => 
+    async (param, {dispatch}) => {
+        debugger
+        return fetch(`https://api.github.com/repos/${param.owner}/${param.repo}/commits`).then(res => 
             res.json()
         )
     }
@@ -23,7 +22,7 @@ export const commits_list = createSlice({
             state.status = 'loading'
         }),
         [getCommits.fulfilled]: ((state, { payload }) => {
-            if(payload.lenght > 0)
+            if(payload.length > 0)
                 state.list = payload
             state.status = 'succes'
         }),

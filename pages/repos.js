@@ -2,14 +2,14 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from '../styles/Home.module.css'
-import { getRepos, selected_repo_list } from './features/slices/repos_list'
+import { getRepos, selected_repo_list } from '../store/slices/repos_list'
 
 export default function Repos() {
   const dispatch = useDispatch()
   const repos_list = useSelector(selected_repo_list)
   
   useEffect(() => {
-    dispatch(getRepos())
+    dispatch(getRepos({owner: process.env.USER}))
   },[dispatch])
 
   return (

@@ -4,8 +4,8 @@ const owner = process.env.USER
 
 export const getInfo = createAsyncThunk(
     'commits/getInfo',
-    async (obj, {dispatch}) => {
-        return fetch(`https://api.github.com/users/${owner}`).then(res => 
+    async (param, {dispatch}) => {
+        return fetch(`https://api.github.com/users/${param.owner}`).then(res => 
             res.json()
         )
     }
